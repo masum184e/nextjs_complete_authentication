@@ -9,8 +9,8 @@ const NavBar = () => {
   if(pathname === "/login" || pathname === "/registration" )return;
   return (
     <>
-      <nav>
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <nav className="bg-white">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link href="/" className="flex items-center gap-2">
             <Image
               className="w-10"
