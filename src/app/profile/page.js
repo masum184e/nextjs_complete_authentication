@@ -11,8 +11,8 @@ const Profile = () => {
 
   const [authorizedUser, setAuthorizedUser] = useState(null);
   const [changePasswordData, setChangePasswordData] = useState({
-    newPwd: "",
-    reTypePwd: "",
+    newPassword: "",
+    currentPassword: "",
   });
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const Profile = () => {
         <div className="flex-1">
           <form >
             <div>
-              <label className="font-semibold text-lg" htmlFor="newPwd">
+              <label className="font-semibold text-lg" htmlFor="newPassword">
                 New Password
               </label>
               <input
@@ -89,24 +89,24 @@ const Profile = () => {
                 className="w-full border-2 rounded py-1 px-2 mt-1"
                 placeholder="Enter a strong password"
                 type="password"
-                name="newPwd"
-                id="newPwd"
-                value={changePasswordData.newPwd}
+                name="newPassword"
+                id="newPassword"
+                value={changePasswordData.newPassword}
                 required
               />
             </div>
             <div className="my-6">
-              <label className="font-semibold text-lg" htmlFor="reTypePwd">
-                Re-Type Password
+              <label className="font-semibold text-lg" htmlFor="currentPassword">
+                Current Password
               </label>
               <input
                 onChange={handleChange}
                 className="w-full border-2 rounded py-1 px-2 mt-1"
                 placeholder="Enter a strong password"
                 type="password"
-                name="reTypePwd"
-                id="reTypePwd"
-                value={changePasswordData.reTypePwd}
+                name="currentPassword"
+                id="currentPassword"
+                value={changePasswordData.currentPassword}
                 required
               />
             </div>
