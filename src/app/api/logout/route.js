@@ -4,7 +4,7 @@ import databaseConnection from "@/config/databaseConnection";
 
 databaseConnection(process.env.DATABASE_URL, process.env.DATABASE_NAME);
 
-export const POST = async (request) => {
+export const GET = async (request) => {
     try {
         const response = NextResponse.json({
             success: true,
