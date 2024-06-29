@@ -21,7 +21,7 @@ const NavBar = () => {
             />
             <h1 className="font-bold text-4xl text-[#050708]">Next.JS</h1>
           </Link>
-          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <div className="flex gap-2">
               <Link
                 href="/registration"
@@ -39,13 +39,13 @@ const NavBar = () => {
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
-              class="border-2 border-[#000] inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#000] rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#000]  "
+              className="border-2 border-[#000] inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#000] rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#000]  "
               aria-controls="navbar-sticky"
               aria-expanded="false"
             >
-              <span class="sr-only">Open main menu</span>
+              <span className="sr-only">Open main menu</span>
               <svg
-                class="w-5 h-5"
+                className="w-5 h-5"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -53,23 +53,23 @@ const NavBar = () => {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M1 1h15M1 7h15M1 13h15"
                 />
               </svg>
             </button>
           </div>
           <div
-            class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+            className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
             id="navbar-sticky"
           >
-            <ul class="flex flex-col md:flex-row bg-[#050708] rounded-full px-6 py-2  mt-4 font-medium md:space-x-8 rtl:space-x-reverse  md:mt-0">
+            <ul className="flex flex-col md:flex-row bg-[#050708] rounded-full px-6 py-2  mt-4 font-medium md:space-x-8 rtl:space-x-reverse  md:mt-0">
               <li>
                 <a
                   href="#"
-                  class={`text-[#fff] ${pathname === "/" ? "font-bold" : ""}`}
+                  className={`text-[#fff] ${pathname === "/" ? "font-bold" : ""}`}
                 >
                   Home
                 </a>
@@ -77,7 +77,7 @@ const NavBar = () => {
               <li>
                 <a
                   href="#"
-                  class={`text-[#fff] ${
+                  className={`text-[#fff] ${
                     pathname === "/firebase" ? "font-bold" : ""
                   }`}
                 >
@@ -87,7 +87,7 @@ const NavBar = () => {
               <li>
                 <a
                   href="#"
-                  class={`text-[#fff] ${
+                  className={`text-[#fff] ${
                     pathname === "/next-auth" ? "font-bold" : ""
                   }`}
                 >
@@ -97,7 +97,7 @@ const NavBar = () => {
               <li>
                 <a
                   href="#"
-                  class={`text-[#fff] ${
+                  className={`text-[#fff] ${
                     pathname === "/o-auth" ? "font-bold" : ""
                   }`}
                 >
