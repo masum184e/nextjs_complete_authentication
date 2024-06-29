@@ -98,6 +98,6 @@ export const PUT = async (request) => {
         return NextResponse.json({
             success: false,
             message: "Server error: " + error.message
-        }, { status: 500 });
+        });
     }
 };
