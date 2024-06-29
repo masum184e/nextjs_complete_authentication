@@ -22,7 +22,7 @@ const Profile = () => {
         if (response.data.success) {
           setAuthorizedUser(response.data.data);
         } else {
-          throw error;
+          console.error("Error fetching profile data:", response.data.message);
         }
       } catch (error) {
         console.error("Error fetching profile data:", error);
@@ -44,10 +44,24 @@ const Profile = () => {
         console.log("Logout success", response.data);
         router.push("/login");
       } else {
-        throw error;
+        console.error("Error during sign out:", response.data.message);
       }
     } catch (error) {
-      console.error("Error fetching profile data:", error);
+      console.error("Error during sign out:", error);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.put("/api/user", changePasswordData);
+      if (response.data.success) {
+        console.log("Password update success", response.data);
+      } else {
+        console.error("Password update failed:", response.data.message);
+      }
+    } catch (error) {
+      console.error("Password update failed:", error);
     }
   };
 
@@ -79,8 +93,8 @@ const Profile = () => {
           </button>
         </div>
         <div className="flex-1">
-          <form >
-          <div >
+          <form onSubmit={handleSubmit}>
+            <div>
               <label className="font-semibold text-lg" htmlFor="currentPassword">
                 Current Password
               </label>
@@ -95,7 +109,7 @@ const Profile = () => {
                 required
               />
             </div>
-            <div className="my-6" >
+            <div className="my-6">
               <label className="font-semibold text-lg" htmlFor="newPassword">
                 New Password
               </label>
@@ -123,4 +137,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default Profile;
