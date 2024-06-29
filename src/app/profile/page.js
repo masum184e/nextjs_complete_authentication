@@ -80,22 +80,7 @@ const Profile = () => {
         </div>
         <div className="flex-1">
           <form >
-            <div>
-              <label className="font-semibold text-lg" htmlFor="newPassword">
-                New Password
-              </label>
-              <input
-                onChange={handleChange}
-                className="w-full border-2 rounded py-1 px-2 mt-1"
-                placeholder="Enter a strong password"
-                type="password"
-                name="newPassword"
-                id="newPassword"
-                value={changePasswordData.newPassword}
-                required
-              />
-            </div>
-            <div className="my-6">
+          <div >
               <label className="font-semibold text-lg" htmlFor="currentPassword">
                 Current Password
               </label>
@@ -107,6 +92,21 @@ const Profile = () => {
                 name="currentPassword"
                 id="currentPassword"
                 value={changePasswordData.currentPassword}
+                required
+              />
+            </div>
+            <div className="my-6" >
+              <label className="font-semibold text-lg" htmlFor="newPassword">
+                New Password
+              </label>
+              <input
+                onChange={handleChange}
+                className="w-full border-2 rounded py-1 px-2 mt-1"
+                placeholder="Enter a strong password"
+                type="password"
+                name="newPassword"
+                id="newPassword"
+                value={changePasswordData.newPassword}
                 required
               />
             </div>
