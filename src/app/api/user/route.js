@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
 import UserModel from "@/models/userSchema";
 import databaseConnection from "@/config/databaseConnection";
-
 
 import { getUserIdFromToken } from "@/helpers/getUserIdFromToken";
 
