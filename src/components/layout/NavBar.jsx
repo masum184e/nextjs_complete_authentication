@@ -1,12 +1,15 @@
 "use client";
 
+import Cookies from "js-cookie";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const pathname = usePathname();
-  if(pathname === "/login" || pathname === "/registration" )return;
+  if (pathname === "/login" || pathname === "/registration") return;
+  const cookie = Cookies.get(process.env.COOKIE_KEY);
+  console.log(cookie)
   return (
     <>
       <nav className="bg-white">
@@ -22,20 +25,34 @@ const NavBar = () => {
             <h1 className="font-bold text-4xl text-[#050708]">Next.JS</h1>
           </Link>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <div className="flex gap-2">
-              <Link
-                href="/registration"
-                className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-              >
-                Sign Up
-              </Link>
-              <Link
-                href="/login"
-                className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-              >
-                Login
-              </Link>
-            </div>
+            {!cookie && (
+              <>
+                <div className="flex gap-2">
+                  <Link
+                    href="/registration"
+                    className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
+                  >
+                    Sign Up
+                  </Link>
+                  <Link
+                    href="/login"
+                    className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
+                  >
+                    Login
+                  </Link>
+                </div>
+              </>
+            )}
+            {cookie && (
+              <>
+                <Image
+                className="rounded-full border-2 border-[#050708] h-10 w-10"
+                 src="/images/avatar.jpg" 
+                 alt="AVATAR" 
+                 height={100} 
+                 width={100} />
+              </>
+            )}
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
@@ -69,7 +86,9 @@ const NavBar = () => {
               <li>
                 <a
                   href="#"
-                  className={`text-[#fff] ${pathname === "/" ? "font-bold" : ""}`}
+                  className={`text-[#fff] ${
+                    pathname === "/" ? "font-bold" : ""
+                  }`}
                 >
                   Home
                 </a>
