@@ -13,7 +13,6 @@ const NavBar = () => {
   useEffect(() => {
     const cookieValue = Cookies.get(process.env.NEXT_PUBLIC_COOKIE_KEY);
     setCookie(cookieValue);
-    console.log(cookieValue);
   }, []);
 
   if (pathname === "/login" || pathname === "/registration") return null;
