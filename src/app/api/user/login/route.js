@@ -13,7 +13,7 @@ export const POST = async (request) => {
         const { email, password } = await request.json();
 
         const existingUser = await UserModel.findOne({ email });
-        if (!existingUser) {
+        if (!existingUser || existingUser.role !== "user") {
             return NextResponse.json({
                 success: false,
                 message: "Invalid user"
