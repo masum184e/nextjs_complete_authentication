@@ -29,7 +29,7 @@ export const POST = async (request) => {
             });
         }
 
-        const token = jwt.sign({ userId: existingUser._id }, process.env.JWT_SECRET_KEY, { expiresIn: process.env.TOKEN_EXPIRES });
+        const token = jwt.sign({ adminId: existingUser._id }, process.env.JWT_SECRET_KEY, { expiresIn: process.env.TOKEN_EXPIRES });
 
         const response = NextResponse.json({
             success: true,
