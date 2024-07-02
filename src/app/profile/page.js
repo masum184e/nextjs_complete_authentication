@@ -69,25 +69,52 @@ const Profile = () => {
     }
   };
 
+  const uploadProfilePicture = () => {
+
+  }
+
   return (
     <>
       <div className="flex mt-8 gap-5">
         <div className="flex-1">
-          <div className="flex gap-4 items-center mb-20">
+          <div className="flex justify-between items-center">
+            <div className="flex gap-4 items-center mb-8">
+              <Image
+                className="rounded-full border-2 border-[#050708]"
+                src="/images/avatar.jpg"
+                alt="AVATAR"
+                width={100}
+                height={100}
+              />
+              <div>
+                <h2 className="text-4xl font-bold flex items-center gap-4 ">
+                  {authorizedUser?.fullName}
+                </h2>
+                <h4> {authorizedUser?.email}</h4>
+              </div>
+            </div>
             <Image
-              className="rounded-full border-2 border-[#050708] p-2"
+              className="border-2 border-[#050708]"
               src="/images/avatar.jpg"
               alt="AVATAR"
               width={100}
               height={100}
             />
-            <div>
-              <h2 className="text-4xl font-bold flex items-center gap-4 ">
-                {authorizedUser?.fullName}
-              </h2>
-              <h4> {authorizedUser?.email}</h4>
-            </div>
           </div>
+          <form onSubmit={uploadProfilePicture} className="flex">
+            <button
+              className="text-[#050708] border border-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-3/4"
+              type="button"
+            >
+              Select File
+            </button>
+            <button
+              className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-1/4"
+              type="submit"
+            >
+              Upload
+            </button>
+          </form>
           <button
             className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full"
             type="button"
