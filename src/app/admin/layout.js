@@ -33,15 +33,15 @@ const Dashboard = ({ children }) => {
             <div className="flex gap-4">
                 <div className="border-r rounded bg-gray-100 w-2/12">
                     <ul className="max-w-md text-lg space-y-1 text-gray-500 list-none list-inside" >
-                        <li className="flex items-center gap-2 hover:text-white hover:bg-gray-700 px-3 py-1">
+                        <li className={`flex items-center gap-2 hover:text-white hover:bg-gray-700 px-3 py-1 ${pathname==="/admin"?"bg-gray-700 text-white":""}`}>
                             <FaUsers />
                             <Link href="/admin">Dashboard</Link>
                         </li>
-                        <li className="flex items-center gap-2 hover:text-white hover:bg-gray-700 px-3 py-1">
+                        <li className={`flex items-center gap-2 hover:text-white hover:bg-gray-700 px-3 py-1 ${pathname==="/admin/users"?"bg-gray-700 text-white":""}`}>
                             <MdDashboard />
                             <Link href="/admin/users">Users</Link>
                         </li>
-                        <li onClick={handleSignOut} className="flex items-center gap-2 hover:text-white hover:bg-gray-700 px-3 py-1">
+                        <li onClick={handleSignOut} className={`flex items-center gap-2 hover:text-white hover:bg-gray-700 px-3 py-1`}>
                             <IoLogOut />
                             <button >Log Out</button>
                         </li>
