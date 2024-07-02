@@ -57,6 +57,10 @@ const Profile = () => {
       const response = await axios.put("/api/user", changePasswordData);
       if (response.data.success) {
         console.log("Password update success", response.data);
+        setChangePasswordData({
+          newPassword: "",
+          currentPassword: "",
+        })
       } else {
         console.error("Password update failed:", response.data.message);
       }
