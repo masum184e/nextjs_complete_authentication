@@ -13,6 +13,14 @@ export const middleware = (request) => {
         return NextResponse.redirect(new URL('/login', request.nextUrl).toString());
     }
 
+    if (isPublicPath && userId && !adminId) {
+        return NextResponse.redirect(new URL('/profile', request.nextUrl).toString());
+    }
+    
+    if (isPublicPath && !userId && adminId) {
+        return NextResponse.redirect(new URL('/admin', request.nextUrl).toString());
+    }
+
     return undefined;
 }
 export const config = {
