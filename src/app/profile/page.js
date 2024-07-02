@@ -69,9 +69,30 @@ const Profile = () => {
     }
   };
 
-  const uploadProfilePicture = () => {
+  const handleFileInputClick = () => {
+    document.getElementById("upload-file").click();
+  };
 
-  }
+  const uploadProfilePicture = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    const fileInput = document.getElementById("upload-file");
+    if (fileInput.files.length > 0) {
+      formData.append("profilePicture", fileInput.files[0]);
+      try {
+        const response = await axios.put("/api/upload-profile-picture", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        if (response.data.success) {
+          console.log("Profile picture upload success", response.data);
+        } else {
+          console.error("Profile picture upload failed:", response.data.message);
+        }
+      } catch (error) {
+        console.error("Profile picture upload failed:", error);
+      }
+    }
+  };
 
   return (
     <>
@@ -102,12 +123,14 @@ const Profile = () => {
             />
           </div>
           <form onSubmit={uploadProfilePicture} className="flex">
-            <button
+          <button
               className="text-[#050708] border border-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-3/4"
               type="button"
+              onClick={handleFileInputClick}
             >
               Select File
             </button>
+            <input type="file" id="upload-file" name="profilePicture" className="hidden" />
             <button
               className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-1/4"
               type="submit"
