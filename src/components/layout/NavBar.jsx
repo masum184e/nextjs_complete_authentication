@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,8 +8,16 @@ import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const pathname = usePathname();
-  if (pathname === "/login" || pathname === "/registration" || pathname === "/admin/login") return;
-  const cookie = Cookies.get(process.env.COOKIE_KEY);
+  const [cookie, setCookie] = useState(null);
+
+  useEffect(() => {
+    const cookieValue = Cookies.get(process.env.NEXT_PUBLIC_COOKIE_KEY);
+    setCookie(cookieValue);
+    console.log(cookieValue);
+  }, []);
+
+  if (pathname === "/login" || pathname === "/registration") return null;
+
   return (
     <>
       <nav className="bg-white">
@@ -24,38 +33,35 @@ const NavBar = () => {
             <h1 className="font-bold text-4xl text-[#050708]">Next.JS</h1>
           </Link>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            {!cookie && (
-              <>
-                <div className="flex gap-2">
-                  <Link
-                    href="/registration"
-                    className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-                  >
-                    Sign Up
-                  </Link>
-                  <Link
-                    href="/login"
-                    className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-2"
-                  >
-                    Login
-                  </Link>
-                </div>
-              </>
+            {!cookie && pathname.indexOf("/admin") !== 0 && (
+              <div className="flex gap-2">
+                <Link
+                  href="/registration"
+                  className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
+                >
+                  Sign Up
+                </Link>
+                <Link
+                  href="/login"
+                  className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-2"
+                >
+                  Login
+                </Link>
+              </div>
             )}
             {cookie && (
-              <>
-                <Image
+              <Image
                 className="rounded-full border-2 border-[#050708] h-10 w-10"
-                 src="/images/avatar.jpg" 
-                 alt="AVATAR" 
-                 height={100} 
-                 width={100} />
-              </>
+                src="/images/avatar.jpg"
+                alt="AVATAR"
+                height={100}
+                width={100}
+              />
             )}
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
-              className="border-2 border-[#000] inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#000] rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#000]  "
+              className="border-2 border-[#000] inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#000] rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#000]"
               aria-controls="navbar-sticky"
               aria-expanded="false"
             >
@@ -81,7 +87,7 @@ const NavBar = () => {
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
             id="navbar-sticky"
           >
-            <ul className="flex flex-col md:flex-row bg-[#050708] rounded-full px-6 py-2  mt-4 font-medium md:space-x-8 rtl:space-x-reverse  md:mt-0">
+            <ul className="flex flex-col md:flex-row bg-[#050708] rounded-full px-6 py-2 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:mt-0">
               <li>
                 <a
                   href="#"
