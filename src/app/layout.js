@@ -9,8 +9,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/images/logo.png" />
+      </head>
       <body>
-      <NavBar />
+        <NavBar />
         <main className="max-w-screen-xl mx-auto">
           {children}
         </main>
