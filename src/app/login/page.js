@@ -108,11 +108,12 @@ const Login = () => {
           </div>
         </div>
         <div className="flex-1">
-          <Image
-            src=""
-            alt="LOGIN"
-            width={100}
-            height={100}
+        <Image
+          className=""
+            src="/images/registration.png"
+            alt="REGISTRATION"
+            width={1000}
+            height={1000}
           />
         </div>
       </div>
