@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const pathname = usePathname();
-  if (pathname === "/login" || pathname === "/registration") return;
+  if (pathname === "/login" || pathname === "/registration" || pathname === "/admin/login") return;
   const cookie = Cookies.get(process.env.COOKIE_KEY);
   return (
     <>
