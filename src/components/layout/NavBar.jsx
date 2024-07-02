@@ -9,7 +9,6 @@ const NavBar = () => {
   const pathname = usePathname();
   if (pathname === "/login" || pathname === "/registration") return;
   const cookie = Cookies.get(process.env.COOKIE_KEY);
-  console.log(cookie)
   return (
     <>
       <nav className="bg-white">
