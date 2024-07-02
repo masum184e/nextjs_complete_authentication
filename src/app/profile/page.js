@@ -80,7 +80,7 @@ const Profile = () => {
     if (fileInput.files.length > 0) {
       formData.append("profilePicture", fileInput.files[0]);
       try {
-        const response = await axios.put("/api/upload-profile-picture", formData, {
+        const response = await axios.put("/api/user/upload-profile-picture", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         if (response.data.success) {
@@ -130,7 +130,7 @@ const Profile = () => {
             >
               Select File
             </button>
-            <input type="file" id="upload-file" name="profilePicture" className="hidden" />
+            <input type="file" id="upload-file" name="profilePicture" className="hidden" required />
             <button
               className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-1/4"
               type="submit"
