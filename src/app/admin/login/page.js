@@ -26,7 +26,9 @@ const Login = () => {
     try {
       const response = await axios.post("/api/admin/login", loginData);
       console.log("Login success", response.data);
-      router.push("/profile");
+      if(response.data.success){
+        router.push("/admin");
+      }
     } catch (error) {
       console.error("Login failed:", error);
     }
@@ -39,16 +41,7 @@ const Login = () => {
         <div className="flex-1">
           <div className="w-[450px] p-4">
             <div>
-              <h2 className="text-5xl font-semibold">Login</h2>
-              <p className="text-lg text-justify mt-3 mb-4">
-                Doesn&#39;t have an account yet?{" "}
-                <Link
-                  href="/registration"
-                  className="text-buttonBackground underline"
-                >
-                  Sign Up
-                </Link>
-              </p>
+              <h2 className="text-5xl font-semibold mb-2">Admin Login</h2>
             </div>
             <form onSubmit={handleSubmit}>
               <div>
@@ -109,10 +102,10 @@ const Login = () => {
         </div>
         <div className="flex-1">
           <Image
-            src=""
-            alt="LOGIN"
-            width={100}
-            height={100}
+            src="/images/registration.png"
+            alt="REGISTRATION"
+            width={1000}
+            height={1000}
           />
         </div>
       </div>
