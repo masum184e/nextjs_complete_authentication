@@ -16,18 +16,22 @@ export default function Home() {
           <h3 className="text-[#29444d] text-xl font-semibold mb-4">
             Why Next.JS _____
           </h3>
-          <h1 className="text-6xl font-bold text-[#29444d]">
-            <span
-              style={{
-                color: "transparent",
-                WebkitTextStroke: "1px yellow",
-              }}
-            >
+          <h1 className="text-6xl font-bold">
+            <span style={{
+              background: 'linear-gradient(to right, #ee0097, #9ca3af, #ffa611, #21bcfd, #000000)',
+              WebkitTextFillColor: 'transparent',
+              WebkitBackgroundClip: 'text',
+            }} >
               Fast, Efficient
             </span>
             <br />
-            <span className="">Fullstack</span>
-            <span className="ml-2 text-[#fea511]">Framework</span>
+            <span style={{
+              background: 'linear-gradient(to right, #000000, #21bcfd, #ffa611, #9ca3af, #ee0097)',
+              WebkitTextFillColor: 'transparent',
+              WebkitBackgroundClip: 'text',
+            }} >
+              Fullstack Framework
+            </span>
           </h1>
           <p className="my-4">
             Next.js is a React framework that gives you building blocks to create web applications. By framework, we mean Next.js handles the tooling and configuration needed for React, and provides additional structure, features, and optimizations for your application.
