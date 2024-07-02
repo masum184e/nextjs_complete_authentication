@@ -13,7 +13,6 @@ export const POST = async (request) => {
         const { email, password } = await request.json();
 
         const existingUser = await UserModel.findOne({ email });
-        console.log(existingUser)
         if (!existingUser || existingUser.role !== "admin") {
             return NextResponse.json({
                 success: false,
