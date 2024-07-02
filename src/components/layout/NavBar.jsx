@@ -13,7 +13,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="bg-white">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2">
           <Link href="/" className="flex items-center gap-2">
             <Image
               className="w-10"
@@ -36,7 +36,7 @@ const NavBar = () => {
                   </Link>
                   <Link
                     href="/login"
-                    className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
+                    className="text-white bg-[#050708] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mb-2"
                   >
                     Login
                   </Link>
