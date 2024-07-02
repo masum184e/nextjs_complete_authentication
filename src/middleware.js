@@ -1,24 +1,16 @@
 import { NextResponse } from 'next/server'
-import { getUserIdFromToken } from './helpers/getUserIdFromToken';
-import { getAdminIdFromToken } from './helpers/getAdminIdFromToken';
 
 export const middleware = (request) => {
     const path = request.nextUrl.pathname;
-    const isPublicPath = ['/login', '/registration', '/admin/login'].includes(path);
+    const isPublicPath = ['/login', '/registration'].includes(path);
 
-    const userId = getUserIdFromToken(request) || '';
-    const adminId = getAdminIdFromToken(request) || '';
-    
-    if (!isPublicPath && (!userId || !adminId)) {
-        return NextResponse.redirect(new URL('/login', request.nextUrl).toString());
-    }
+    const authorizationToken = request.cookies.get(process.env.COOKIE_KEY)?.value || '';
 
-    if (isPublicPath && userId && !adminId) {
+    if (isPublicPath && authorizationToken) {
         return NextResponse.redirect(new URL('/profile', request.nextUrl).toString());
     }
-    
-    if (isPublicPath && !userId && adminId) {
-        return NextResponse.redirect(new URL('/admin', request.nextUrl).toString());
+    if (!isPublicPath && !authorizationToken) {
+        return NextResponse.redirect(new URL('/login', request.nextUrl).toString());
     }
 
     return undefined;
@@ -28,6 +20,5 @@ export const config = {
         '/profile',
         '/login',
         '/registration',
-        '/admin/:path*'
     ]
 }
