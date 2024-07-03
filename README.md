@@ -27,3 +27,33 @@ VITE_APPID=your-app-id
 VITE_MEASUREMENTID=your-measurement-id
 ```
 Copy and paste it from your firebase project setting.
+
+
+# Libraries
+|          Library          |                                           Uses                                             |
+| ------------------------- |--------------------------------------------------------------------------------------------|
+| axios                     | make HTTP request                                                                          |
+| react                     | JavaScript library for building user interfaces.                                           |
+| react-dom                 | React package for working with the DOM.                                                    |
+| bcrypt                    | Hash password securely                                                                     |
+| react-icons               | Library for including popular icon packs in React applications.                            |
+| tailwindcss               | Utility-first CSS framework for rapid UI development.                                      |
+| flowbite                  | Utility library for Tailwind CSS that provides pre-designed UI components.                 |
+| jsonwebtoken              | Library for generating and verifying JSON Web Tokens (JWT).                                |
+| mongoose                  | MongoDB object modeling tool for Node.js.                                                  |
+| next                      | React framework for server-rendered applications.                                          |
+
+
+# Key Features
+### User
+- Registration
+- Login
+- Sign Out
+- Profile
+- Change Password
+
+### Admin
+- Registration
+- Login
+- Sign Out
+- View User List
