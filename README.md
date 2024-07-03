@@ -18,13 +18,16 @@ npm run dev
 
 # Environment Variables
 ```
-VITE_APIKEY=your-api-key
-VITE_AUTHDOMAIN=your-auth-domain
-VITE_PROJECTID=your-project-id
-VITE_STORAGEBUCKET=your-storage-bucket
-VITE_MESSAGINGSENDERID=your-messaging-sender-id
-VITE_APPID=your-app-id
-VITE_MEASUREMENTID=your-measurement-id
+DATABASE_NAME=nextjs_complete_authentication
+DATABASE_URL=mongodb://localhost:27017/
+
+COOKIE_KEY=nextjs_complete_authentication
+BCRYPT_GEN_SALT_NUMBER=10
+
+JWT_SECRET_KEY=nextjs_complete_authentication
+TOKEN_EXPIRES=5d
+
+PROFILE_PIC_DIRECTORY=public
 ```
 Copy and paste it from your firebase project setting.
 
