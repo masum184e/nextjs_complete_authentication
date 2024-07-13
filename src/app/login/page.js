@@ -7,11 +7,11 @@ import Image from "next/image";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
-import Provider from "@/context/Provider";
+import { ImplementContext } from "@/context/Provider";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { setLoader } = useContext(Provider);
+  const { setLoader } = useContext(ImplementContext);
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [loginData, setloginData] = useState({

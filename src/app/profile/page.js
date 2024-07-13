@@ -6,10 +6,10 @@ import Image from "next/image";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import toast from "react-hot-toast";
-import Provider from "@/context/Provider";
+import { ImplementContext } from "@/context/Provider";
 
 const Profile = () => {
-  const { setLoader } = useContext(Provider)
+  const { setLoader } = useContext(ImplementContext)
   const router = useRouter();
 
   const [authorizedUser, setAuthorizedUser] = useState(null);

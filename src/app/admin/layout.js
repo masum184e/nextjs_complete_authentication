@@ -10,10 +10,11 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useContext } from "react";
-import Provider from "@/context/Provider";
+import { ImplementContext } from "@/context/Provider";
+
 
 const Dashboard = ({ children }) => {
-    const { setLoader } = useContext(Provider)
+    const { setLoader } = useContext(ImplementContext)
     const router = useRouter();
     const pathname = usePathname();
 

@@ -1,11 +1,11 @@
 "use client"
-import Provider from "@/context/Provider";
+import { ImplementContext } from "@/context/Provider";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import toast from "react-hot-toast";
 
 const Users = () => {
-  const { setLoader } = useContext(Provider)
+  const { setLoader } = useContext(ImplementContext)
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const fetchProfileData = async () => {

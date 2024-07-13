@@ -8,10 +8,10 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import toast from "react-hot-toast";
-import Provider from "@/context/Provider";
+import { ImplementContext } from "@/context/Provider";
 
 const Registration = () => {
-  const { setLoader } = useContext(Provider);
+  const { setLoader } = useContext(ImplementContext);
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [registrationData, setRegistrationData] = useState({
