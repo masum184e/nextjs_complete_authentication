@@ -38,7 +38,7 @@ const Dashboard = ({ children }) => {
     };
     return (
         <>
-            <div className="flex gap-4 h-[92vh]">
+            <div className="flex gap-4 h-[92vh] pt-4">
                 <div className="border-r rounded bg-black w-2/12">
                     <ul className="max-w-md text-lg list-none list-inside" >
                         <li className={`flex items-center gap-2 hover:text-black hover:bg-white px-3 py-1 ${pathname === "/admin" ? "bg-white text-black" : "text-white"}`}>
