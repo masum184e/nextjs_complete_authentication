@@ -13,7 +13,7 @@ const ClientNavBar = ({ authorizationToken }) => {
     console.log("NavBar");
   }, [authorizationToken]);
 
-  if (pathname === "/login" || pathname === "/registration") return null;
+  if (pathname === "/login" || pathname === "/registration" || pathname==="/admin/login") return null;
   return (
     <nav className="bg-white">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2">

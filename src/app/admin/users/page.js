@@ -1,11 +1,12 @@
 "use client"
 import { ImplementContext } from "@/context/Provider";
 import axios from "axios";
+import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import toast from "react-hot-toast";
 
 const Users = () => {
-  const { setLoader } = useContext(ImplementContext)
+  const { setLoader, loader } = useContext(ImplementContext)
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -25,6 +26,10 @@ const Users = () => {
     };
     fetchProfileData();
   }, []);
+
+  if(loader){
+    return <Image src="/images/loader.gif" alt="LOADER" width={1000} height={1000} />;
+  }
   return (
     <div className="overflow-auto max-h-[92vh] w-full">
       {users && users.length > 0 ?

@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 import { ImplementContext } from "@/context/Provider";
 
 const Profile = () => {
-  const { setLoader } = useContext(ImplementContext)
+  const { setLoader, loader } = useContext(ImplementContext)
   const router = useRouter();
 
   const [authorizedUser, setAuthorizedUser] = useState(null);
@@ -125,10 +125,16 @@ const Profile = () => {
                 height={100}
               />
               <div>
-                <h2 className="text-4xl font-bold flex items-center gap-4 ">
-                  {authorizedUser?.fullName}
-                </h2>
-                <h4> {authorizedUser?.email}</h4>
+                {
+                  loader ?
+                  <Image src="/images/loader.gif" alt="LOADER" width={100} height={100} />
+                    : <>
+                      <h2 className="text-4xl font-bold flex items-center gap-4 ">
+                        {authorizedUser?.fullName}
+                      </h2>
+                      <h4> {authorizedUser?.email}</h4>
+                    </>
+                }
               </div>
             </div>
             <Image
