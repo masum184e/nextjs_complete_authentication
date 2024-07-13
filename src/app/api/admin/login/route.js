@@ -29,13 +29,14 @@ export const POST = async (request) => {
         }
 
         const token = jwt.sign({ adminId: existingUser._id }, process.env.JWT_SECRET_KEY, { expiresIn: process.env.TOKEN_EXPIRES });
-
         const response = NextResponse.json({
             success: true,
             message: "Login successful"
         });
-
+        
+        const expires = new Date(Date.now() + (parseInt(process.env.COOKIE_EXPIRES)) * 24 * 60 * 60 * 1000);
         response.cookies.set(process.env.COOKIE_KEY, token, {
+            expires,
             httpOnly: true,
             secure: true,
             sameSite: 'none'

@@ -35,7 +35,9 @@ export const POST = async (request) => {
             message: "Login successful"
         });
 
+        const expires = new Date(Date.now() + (parseInt(process.env.COOKIE_EXPIRES)) * 24 * 60 * 60 * 1000);
         response.cookies.set(process.env.COOKIE_KEY, token, {
+            expires,
             httpOnly: true,
             secure: true,
             sameSite: 'none'
