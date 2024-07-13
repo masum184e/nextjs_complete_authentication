@@ -1,14 +1,17 @@
 "use client"
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Image from "next/image";
 
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
+import toast from "react-hot-toast";
+import Provider from "@/context/Provider";
 
 const Registration = () => {
+  const { setLoader } = useContext(Provider);
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [registrationData, setRegistrationData] = useState({
@@ -25,11 +28,18 @@ const Registration = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setLoader(true);
       const response = await axios.post("/api/user/registration", registrationData);
-      console.log("Registration success", response.data);
-      router.push("/profile");
+      if (response.data.status) {
+        router.push("/profile");
+      } else {
+        toast.success(response.data.message);
+      }
     } catch (error) {
+      toast.error("Registration failed")
       console.error("Registration failed:", error);
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -107,7 +117,7 @@ const Registration = () => {
         </div>
         <div className="flex-1">
           <Image
-          className=""
+            className=""
             src="/images/registration.png"
             alt="REGISTRATION"
             width={1000}
