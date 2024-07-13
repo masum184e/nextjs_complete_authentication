@@ -1,14 +1,16 @@
 "use client"
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Image from "next/image";
 
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
-
+import { ImplementContext } from "@/context/Provider";
+import toast from "react-hot-toast";
 const Login = () => {
+  const { setLoader } = useContext(ImplementContext);
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [loginData, setloginData] = useState({
@@ -24,13 +26,18 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setLoader(true);
       const response = await axios.post("/api/admin/login", loginData);
-      console.log("Login success", response.data);
-      if(response.data.success){
-        router.push("/admin");
+      if (response.data.status) {
+        router.push("/profile");
+      } else {
+        toast.success(response.data.message);
       }
     } catch (error) {
+      toast.error("Login failed")
       console.error("Login failed:", error);
+    } finally {
+      setLoader(false);
     }
   };
 
