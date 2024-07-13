@@ -28,7 +28,7 @@ const Login = () => {
     try {
       setLoader(true);
       const response = await axios.post("/api/admin/login", loginData);
-      if (response.data.status) {
+      if (response.data.success) {
         router.push("/profile");
       } else {
         toast.success(response.data.message);

@@ -30,7 +30,7 @@ const Registration = () => {
     try {
       setLoader(true);
       const response = await axios.post("/api/user/registration", registrationData);
-      if (response.data.status) {
+      if (response.data.success) {
         router.push("/profile");
       } else {
         toast.success(response.data.message);

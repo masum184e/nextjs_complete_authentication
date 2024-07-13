@@ -26,7 +26,7 @@ const Users = () => {
     fetchProfileData();
   }, []);
   return (
-    <div className="overflow-auto max-h-[92vh]">
+    <div className="overflow-auto max-h-[92vh] w-full">
       {users && users.length > 0 ?
         <>
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 text-center">
