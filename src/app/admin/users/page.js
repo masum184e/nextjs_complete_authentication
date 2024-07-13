@@ -1,20 +1,26 @@
 "use client"
+import Provider from "@/context/Provider";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import toast from "react-hot-toast";
 
 const Users = () => {
+  const { setLoader } = useContext(Provider)
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
+        setLoader(true);
         const response = await axios.get("/api/admin/user");
         if (response.data.success) {
           setUsers(response.data.data);
         } else {
-          console.error("Error fetching profile data:", response.data.message);
+          toast.error(response.data.message)
         }
       } catch (error) {
-        console.error("Error fetching profile data:", error);
+        toast.error(error.message)
+      } finally {
+        setLoader(false);
       }
     };
     fetchProfileData();

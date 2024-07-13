@@ -4,9 +4,12 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import toast from "react-hot-toast";
+import Provider from "@/context/Provider";
 
 const Profile = () => {
+  const { setLoader } = useContext(Provider)
   const router = useRouter();
 
   const [authorizedUser, setAuthorizedUser] = useState(null);
@@ -18,14 +21,17 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
+        setLoader(true);
         const response = await axios.get("/api/user");
         if (response.data.success) {
           setAuthorizedUser(response.data.data);
         } else {
-          console.error("Error fetching profile data:", response.data.message);
+          toast.error(response.data.message);
         }
       } catch (error) {
-        console.error("Error fetching profile data:", error);
+        toast.error(error.message)
+      } finally {
+        setLoader(false);
       }
     };
     fetchProfileData();
@@ -39,33 +45,39 @@ const Profile = () => {
 
   const handleSignOut = async () => {
     try {
+      setLoader(true);
       const response = await axios.get("/api/logout");
       if (response.data.success) {
-        console.log("Logout success", response.data);
+        toast.success("Logout success");
         router.push("/login");
       } else {
-        console.error("Error during sign out:", response.data.message);
+        toast.error(response.data.message)
       }
     } catch (error) {
-      console.error("Error during sign out:", error);
+      toast.error(error.message);
+    } finally {
+      setLoader(false);
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setLoader(true);
       const response = await axios.put("/api/user", changePasswordData);
       if (response.data.success) {
-        console.log("Password update success", response.data);
+        toast.success(response.data.message)
         setChangePasswordData({
           newPassword: "",
           currentPassword: "",
         })
       } else {
-        console.error("Password update failed:", response.data.message);
+        toast.error(response.data.message)
       }
     } catch (error) {
-      console.error("Password update failed:", error);
+      toast.error(error.message)
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -80,18 +92,21 @@ const Profile = () => {
     if (fileInput.files.length > 0) {
       formData.append("profilePicture", fileInput.files[0]);
       try {
+        setLoader(true);
         const response = await axios.put("/api/user/upload-profile-picture",
           {
             body: formData,
             // headers: { "Content-Type": "multipart/form-data" },
           });
         if (response.data.success) {
-          console.log("Profile picture upload success", response.data);
+          toast.success(response.data.message)
         } else {
-          console.error("Profile picture upload failed:", response.data.message);
+          toast.error(response.data.message)
         }
       } catch (error) {
-        console.error("Profile picture upload failed:", error);
+        toast.error(error.message)
+      } finally {
+        setLoader(false);
       }
     }
   };
